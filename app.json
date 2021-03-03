@@ -1,0 +1,12 @@
+{
+  "name": "cthulhu-bot-app",
+  "displayName": "cthulhu-bot-app",
+  "expo": {
+    "name": "cthulhu-bot-app",
+    "slug": "cthulhu-bot-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
