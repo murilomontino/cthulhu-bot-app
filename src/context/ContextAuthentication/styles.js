@@ -1,17 +1,12 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-	container: {
+	containerLoading:{
 		flex: 1,
-		alignItems: 'center',
 		justifyContent: 'center',
+		alignItems: 'center'
 	},
-	text:{
-		textAlign: 'center',
-		fontWeight: 'bold',
-		fontSize: 48
-
-	}
+	spinnerTextStyle: {
+		color: '#FFF'
+	},
 })
-
-

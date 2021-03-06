@@ -1,53 +1,48 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 
 export default StyleSheet.create({
 	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		width: '100%',
+		flex: 1,		
 	},
+	containerKeyboard:{
+		flex: 5,
+		justifyContent: 'center',
+	},
+	
+	viewKeyboard:{
+		justifyContent: 'center',
 
-	txtInput:{
-		padding: 15,
-		backgroundColor: '#fff',
-		borderRadius: 30,
-		width: '80%',
-		fontSize: 20,
- 
 	},
 	logo:{
-		width: 200,
-		height: 200,
+		paddingTop: 20,
+		width:  '100%',
+		height: Platform.OS==='web'? 200:'50%',
+		marginBottom: 10,
 		resizeMode: 'contain',
+		alignSelf: 'center'
 	},
-	txt:{
-		fontSize: 45
-	},
-	txtWebInvalido:{
-		color:'#f04141',
-		fontSize: 20,
-		display: 'flex',
-		fontFamily: 'Fantasy'
-		
-	},
-	touchableButton:{
+	txtInput:{
+		alignSelf: 'center',
 		padding: 15,
+		borderRadius: 30,
+		width: '90%',
+		backgroundColor: '#fff',
+		color: '#000',
+		fontSize: 16,
 	},
-	touchableText:{
-		fontSize: 30,
-		fontWeight: 'bold',
-		marginRight: 20
+	icon:{
+		paddingHorizontal: 20,
+		alignSelf: 'flex-end'
 	},
 	containerTouchable:{
-		width: '80%',
-		height: 40
+		backgroundColor: '#92d495',
+		width: 'auto',
+		padding: 10,
+		borderRadius: 20,
+		alignSelf: 'center'
 	},
-	touchableNotToken:{
-
+	touchableText:{
+		color: '#465247',
 	},
-	touchableNotText:{
-
-	}
 	
 })

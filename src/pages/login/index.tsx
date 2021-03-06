@@ -1,69 +1,56 @@
-import React, { useState } from 'react'
-import { View, TextInput, Image, TouchableOpacity, Text, Alert } from 'react-native'
+import React from 'react'
+import { 
+	View, 
+	Image, 
+	TouchableOpacity, 
+	Text, 
+	KeyboardAvoidingView,
+	TextInput,
+	
+} from 'react-native'
 import css from './styles'
+import Icon from 'react-native-vector-icons/Entypo'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import {useAuthentication} from '../../context/ContextAuthentication'
+
 
 const LoginPage = (): JSX.Element => {
 
-	const [token, setToken] = useState('')
-	const creteButtonAlert = () =>
-		Alert.alert(
-			'Token Inválido',
-			'Você digitou um token inválido, tente novamente',
-			[
-				{ text: 'OK' }
-			],
-			{ cancelable: false }
-		)
-	
-	// NzE1NjgyMDcxOTQyNTI5MTM0.XuW_-w.UGFoK5PZ38PADlRy3qyrNGJk_1Q
-	
-	const sendToken = async () =>{
-		const response = await fetch('https://192.168.0.7:3000/discord',
-			{
-				method: 'POST',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					title: 'loginWithToken',
-					token: token
-				})
-			})
-			
-		const { result } =  await response.json()
-		if(result === 'Token Inválido'){
-			creteButtonAlert()
-		}else{
-			Alert.alert(
-				'Token Válido',
-				'Teste feito com sucesso',
-				[
-					{ text: 'OK' }
-				],
-				{ cancelable: false }
-			)
-		}
-
+	const {sendToken} = useAuthentication()
+	let token = ''
+	const logStorage = async ()=>{
+		const value = await AsyncStorage.getItem('@idBot')
+		console.log(value)
 	}
-
-	
-
+	console.log('render')
+	// _getText()
 	return (
-		<View style={css.container}>
-      
-			<Image style={css.logo} source={require('../../../asserts/logo.png')}/>
-			<TextInput 
-				style={css.txtInput} 
-				placeholder='Token'
-				onChangeText={(text)=>setToken(text)}
-			/>
-			<View style={css.containerTouchable}>
-				<TouchableOpacity style={css.touchableButton} onPress={sendToken}>
-					<Text style={css.touchableText}>Entrar</Text>
-				</TouchableOpacity>
-				<TouchableOpacity style={css.touchableNotToken} >
-					<Text style={css.touchableNotText}>Onde conseguir um token?</Text>
+	
+		<View style={{
+			flex: 1,
+		}}>
+			
+			<KeyboardAvoidingView style={css.containerKeyboard}>
+				<View style={css.viewKeyboard}>
+					<Image style={css.logo} source={require('../../../asserts/logo.png')}/>
+					<TextInput 
+						style={css.txtInput} 
+						placeholder='Token'
+						onChangeText={ text => token = text	}
+					/>
+					<TouchableOpacity onPress={()=> sendToken(token)}>
+						<Icon style={css.icon}name="chevron-right" size={40} color="black" />
+					</TouchableOpacity>
+				</View>
+			</KeyboardAvoidingView>
+			
+		
+			
+			<View style={{
+				flex: 1
+			}}>
+				<TouchableOpacity style={css.containerTouchable} onPress={logStorage}>
+					<Text style={css.touchableText}>Onde conseguir um token?</Text>
 				</TouchableOpacity>  
 			</View>
 			
