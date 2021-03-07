@@ -38,7 +38,7 @@ const LoginPage = (): JSX.Element => {
 						placeholder='Token'
 						onChangeText={ text => token = text	}
 					/>
-					<TouchableOpacity onPress={()=> sendToken(token)}>
+					<TouchableOpacity style={css.touchableIcon} onPress={()=> sendToken(token)}>
 						<Icon style={css.icon}name="chevron-right" size={40} color="black" />
 					</TouchableOpacity>
 				</View>

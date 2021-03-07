@@ -2,7 +2,6 @@ import React from 'react'
 import Login from './pages/login'
 import Home from './pages/home'
 import { useAuthentication } from './context/ContextAuthentication'
-import ContextConsumerAPI from './context/ContextConsumerAPI'
 
 const Navigation = (): JSX.Element => {
 	
@@ -11,9 +10,7 @@ const Navigation = (): JSX.Element => {
 	return (
 		<>
 			{!isPrivate && <Login /> }
-			<ContextConsumerAPI>
-				{isPrivate && <Home/> }
-			</ContextConsumerAPI>
+			{isPrivate && <Home/> }
 		</>
 	)
 }

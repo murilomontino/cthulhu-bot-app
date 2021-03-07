@@ -8,7 +8,6 @@ import React, {
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Alert, Platform } from 'react-native'
-import css from './styles'
 import Spinner from 'react-native-loading-spinner-overlay'
 
 
@@ -116,7 +115,6 @@ const ContextAuthProvider = (props:Props):JSX.Element => {
 				visible={isLoading}
 				size='large'
 				textContent={'Logando...'}
-				textStyle={css.spinnerTextStyle}
 			/>
 			{props.children}
 		</ContextAuth.Provider>

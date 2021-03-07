@@ -31,8 +31,7 @@ export default StyleSheet.create({
 		fontSize: 16,
 	},
 	icon:{
-		paddingHorizontal: 20,
-		alignSelf: 'flex-end'
+	
 	},
 	containerTouchable:{
 		backgroundColor: '#92d495',
@@ -44,5 +43,9 @@ export default StyleSheet.create({
 	touchableText:{
 		color: '#465247',
 	},
-	
+	touchableIcon:{
+		paddingHorizontal: 10,
+		alignSelf: 'flex-end',
+		width: 'auto'
+	}
 })
