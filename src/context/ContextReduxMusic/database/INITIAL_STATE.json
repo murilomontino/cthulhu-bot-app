@@ -5,7 +5,14 @@
 			"title": "Arma de Fogo(Pistola)",
 			"url": "https://www.youtube.com/watch?v=mPoiVeqvP3Y&ab_channel=JUNINHOFF",
 			"icon": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fgame-icons.net%2Ficons%2Fjohn-colburn%2Foriginals%2Fpng%2F000000%2Ftransparent%2Fpistol-gun.png&f=1&nofb=1",
-			"categoria": ["Arma"]
+			"categoria": ["Arma", "Ação"]
+		},
+		{
+			"id": 1,
+			"title": "Porta",
+			"url": "https://www.youtube.com/watch?v=VISEkZtruXQ&ab_channel=BlobSound",
+			"icon": "",
+			"categoria": ["Horror"]
 		}
 
 	]

@@ -6,6 +6,7 @@ import {
 	Text, 
 	KeyboardAvoidingView,
 	TextInput,
+	Platform,
 	
 } from 'react-native'
 import css from './styles'
@@ -30,7 +31,9 @@ const LoginPage = (): JSX.Element => {
 			flex: 1,
 		}}>
 			
-			<KeyboardAvoidingView style={css.containerKeyboard}>
+			<KeyboardAvoidingView 
+				behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+				style={css.containerKeyboard}>
 				<View style={css.viewKeyboard}>
 					<Image style={css.logo} source={require('../../../asserts/logo.png')}/>
 					<TextInput 

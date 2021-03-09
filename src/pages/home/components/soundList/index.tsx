@@ -1,19 +1,18 @@
 import React, {useContext} from 'react'
 import { View, Text, Button } from 'react-native'
-import { useSelector, useDispatch } from 'react-redux'
-import { state } from '../../../../context/ContextReduxMusic'
-import actions from '../../../../context/ContextReduxMusic/contextActions'
-
+import { useDispatch, useSelector } from 'react-redux'
+import {actions, state} from '../../../../context/ContextReduxMusic/'
 
 const SoundList = ():JSX.Element => {
-	const sounds = useSelector((state:state) => state.sounds)
+	const sounds = useSelector((state:state) => state.soundPadReducer.sounds )
 	const dispatch = useDispatch()
+	
 	const {addSoundAction, removeSoundAction} = useContext(actions)
 	const removeClick = (id:number)=>{
-		dispatch(removeSoundAction(id))
+		dispatch(removeSoundAction(id))	
 	}
-	const actionClick = ()=>{
-		dispatch(addSoundAction())
+	const actionClick = ()=>{	
+		dispatch(addSoundAction())	
 	}
 	
     
