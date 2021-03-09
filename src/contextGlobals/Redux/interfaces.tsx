@@ -11,6 +11,10 @@ export interface actionFunction {
     sound:sound
 }
 
-export interface soundPadReducer {
-	sounds: [sound]
+interface sounds{
+    sounds: [sound]
+}
+
+export interface state {
+	soundPadReducer: sounds
 }

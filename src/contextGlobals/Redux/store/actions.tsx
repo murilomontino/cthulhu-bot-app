@@ -1,5 +1,3 @@
-import {  createContext } from 'react'
-
 const addSoundAction = () =>{
 	return {
 		type: 'ADD_SOUND', 
@@ -19,9 +17,11 @@ const removeSoundAction = (id:number) =>{
 
 }
 
-const actions = createContext({
-	addSoundAction,
-	removeSoundAction
-})
+const actions ={
+	removeSoundAction,
+	addSoundAction
+}
+
 
 export default actions
+

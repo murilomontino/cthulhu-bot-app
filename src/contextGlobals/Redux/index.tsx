@@ -1,5 +1,5 @@
 import { store, persistedStore } from './store'
-import actions from './store/contextActions'
+import actions from './store/actions'
 import {actionFunction, sound, state} from './interfaces'
 
 
@@ -8,8 +8,8 @@ export {
 	store,
 	actions,
 	actionFunction, 
-	sound, 
-	state,
+	sound,
+	state
 }
 
 

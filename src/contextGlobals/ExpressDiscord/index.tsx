@@ -1,6 +1,3 @@
-import {  createContext } from 'react'
-
-
 interface Body {
 	title: string
 	id: string
@@ -25,8 +22,5 @@ const expressDiscord = async (body:Body) =>{
 	return await rep.json()
 }
 
-const ExpressDiscord = createContext({
-	expressDiscord
-})
 
-export default ExpressDiscord
+export default expressDiscord

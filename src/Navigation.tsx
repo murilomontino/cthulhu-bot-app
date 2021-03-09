@@ -1,7 +1,7 @@
 import React from 'react'
 import Login from './pages/login'
 import Home from './pages/home'
-import { useAuthentication } from './context/ContextAuthentication'
+import { useAuthentication } from './contextGlobals/ContextAuthentication'
 
 const Navigation = (): JSX.Element => {
 	

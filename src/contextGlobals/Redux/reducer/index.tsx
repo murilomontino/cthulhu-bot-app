@@ -4,3 +4,4 @@ import { combineReducers } from 'redux';
 export default combineReducers({
   soundPadReducer: ReducerSounds,
 });
+
