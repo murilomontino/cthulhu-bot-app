@@ -1,10 +1,34 @@
-import Types from '../../database/constant'
-import INITIAL_STATE from '../../database/INITIAL_STATE.json'
-import { actionFunction } from '../..'
+import INITIAL_STATE from './INITIAL_STATE.json'
 
-export const ReducerSounds = (state=INITIAL_STATE, action:actionFunction) =>{
+
+const Types = {
+	addSound: 'SOUND/ADD',
+	removeSound: 'SOUND/REMOVE',
+	reset: 'SOUND/RESET',
+
+
+}
+
+interface payLoad {
+	type: string,
+	sound: {[key:string]:string|number}
+}
+
+interface action {
+    type:string,
+	sound: {
+	id: number,
+    title: string,
+    url?: string|undefined,
+    icon?: string|undefined,
+    categoria?: Array<string>|undefined 
+	}
+}
+
+
+export const ReducerSounds = (state=INITIAL_STATE, action:action): typeof INITIAL_STATE =>{
 	switch (action.type) {
-	case Types.ADD_SOUND:
+	case Types.addSound:
 		return {...state, sounds: [ ...state.sounds, 
 			{
 				id: action.sound.id,
@@ -14,7 +38,7 @@ export const ReducerSounds = (state=INITIAL_STATE, action:actionFunction) =>{
 				categoria: action.sound.categoria
 			}]}
 			
-	case Types.DELETE_SOUND:{
+	case Types.removeSound:{
 		const filter = state.sounds.filter(sound=>sound.id !== action.sound.id)
 		return {
 			...state,
@@ -23,16 +47,8 @@ export const ReducerSounds = (state=INITIAL_STATE, action:actionFunction) =>{
 			]
 		}
 	}
-	case Types.EDIT_SOUND:{
-		break
-	}
-	case Types.EDIT_ICON:{
-		break
-	}
-	case Types.EDIT_URL:{
-		break
-	}
-	case Types.RESET:
+	
+	case Types.reset:
 
 		return INITIAL_STATE //Always return the initial state
 	
@@ -41,4 +57,46 @@ export const ReducerSounds = (state=INITIAL_STATE, action:actionFunction) =>{
 
 	}
 }
+
+
+
+
+const addSoundAction = (title:string, id:number): payLoad =>{
+	return {
+		type: Types.addSound, 
+		sound:{
+			id: id,
+			title: title
+		}}
+}
+
+const removeSoundAction = (id:number): payLoad =>{
+	return {
+		type: Types.removeSound, 
+		sound:{
+			id: id,
+		}
+	}
+
+}
+
+const resetSound = (): payLoad =>{
+	return {
+		type: Types.reset, 
+		sound:{
+			
+		}
+	}
+
+}
+
+
+const actions ={
+	removeSoundAction,
+	addSoundAction,
+	resetSound
+}
+
+
+export default actions
 

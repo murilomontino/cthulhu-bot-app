@@ -1,7 +1,7 @@
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import SoundPad from '../../pages/SoundPad'
-import { Categories } from './Categories'
+import { Categories } from '../Categories'
 
 
 const Drawer = createDrawerNavigator()

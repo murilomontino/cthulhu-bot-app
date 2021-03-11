@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from 'react'
 import { enableScreens } from 'react-native-screens'
 import {   DrawerActions, NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { state } from '../../Redux'
 
 
 import Profile from '../../pages/Profile'
@@ -12,7 +11,6 @@ import TabMenu from '../TabMenu'
 import Entypo from 'react-native-vector-icons/Entypo'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import css from './styles'
-import { useSelector } from 'react-redux'
 
 enableScreens()
 const Stack = createStackNavigator()

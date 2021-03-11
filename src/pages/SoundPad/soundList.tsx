@@ -1,20 +1,21 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { actions, state } from '../../Redux'
+import { state } from '../../redux/reducer'
+import actions from '../../redux/reducer/reducerSounds'
 
 const SoundList = ():JSX.Element => {
 	const sounds = useSelector((state:state) => state.soundPadReducer.sounds )
 	const dispatch = useDispatch()
 	
-	const {addSoundAction, removeSoundAction, resetSound} = actions
+	const { addSoundAction, removeSoundAction, resetSound} = actions
 	const removeClick = (id:number)=>{
 		dispatch(removeSoundAction(id))	
 	}
-	const actionClick = ()=>{	
-		dispatch(addSoundAction())
+	const actionClick = (title='Monyse GOSTOSA', id:number)=>{	
+		// console.log(addSoundAction(title))
+		dispatch(addSoundAction(title, id))
 	}
-	
 	const clickReset =()=>{
 		dispatch(resetSound())
 	}
@@ -26,7 +27,7 @@ const SoundList = ():JSX.Element => {
 						{
 							flexDirection: 'row'
 						}
-					} key={sound.title}>
+					} key={sound.id}>
 						<Text>
 							{sound.title}
 						</Text>
@@ -34,7 +35,7 @@ const SoundList = ():JSX.Element => {
 					</View>)
 				)}	
 			</View>
-			<Button title='ADD' onPress={actionClick}/>
+			<Button title='ADD' onPress={()=>actionClick('click', 3)}/>
 			<Button title='reset' onPress={clickReset}/>
 
 		</>

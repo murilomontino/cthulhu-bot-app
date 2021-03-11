@@ -12,7 +12,7 @@ import {
 import css from './styles'
 import Icon from 'react-native-vector-icons/Entypo'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {useAuthentication} from '../../contextGlobals/ContextAuthentication'
+import {useAuthentication} from '../../context/ContextAuthentication'
 
 
 const LoginPage = (): JSX.Element => {

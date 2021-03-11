@@ -1,42 +1,17 @@
-import { store, persistedStore } from './store'
-import actions from './reducer/reducerSounds/actions'
+import {createStore} from 'redux' //applyMiddleware
+import rootReducers from './reducer'
+import {persistStore,persistReducer} from 'redux-persist'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+// import {createLogger} from 'redux-logger'
 
-interface sound {
-    id: number,
-    title: string,
-    url?: string|undefined,
-    icon?: string|undefined,
-    categoria?: Array<string>|undefined 
+const persistConfig = {
+	key: 'root',
+	storage: AsyncStorage,
+	whitelist: ['soundPadReducer']
 }
 
-interface actionFunction {
-    type: string,
-    sound:sound,
-    drawerIsOpen: boolean
-}
-
-interface sounds{
-    sounds: [sound]
-}
-
-interface drawer {
-    drawerIsOpen: boolean
-}
-
-interface state {
-	soundPadReducer: sounds,
-    drawerReducer: drawer
-}
-
-export {
-	persistedStore,
-	store,
-	actions,
-	actionFunction, 
-	sound,
-	state
-}
-
-
+const reducers = persistReducer(persistConfig, rootReducers)
+export const store = createStore(reducers)
+export const persistedStore = persistStore(store) 
 
 
