@@ -1,0 +1,5 @@
+{
+    "eslint.options": {
+        "configFile": "E:/Workspace/discord_react_native/cthulhu-bot-app/.eslintrc.json"
+    }
+}

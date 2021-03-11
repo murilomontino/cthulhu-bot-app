@@ -2,7 +2,6 @@
     "env": {
         "es2021": true
     },
-    "files": ["*.ts", "*.tsx", "*.native.tsx"],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",

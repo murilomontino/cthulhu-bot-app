@@ -1,21 +1,23 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { actions, state } from '../../contextGlobals/Redux'
+import { actions, state } from '../../Redux'
 
 const SoundList = ():JSX.Element => {
 	const sounds = useSelector((state:state) => state.soundPadReducer.sounds )
 	const dispatch = useDispatch()
 	
-	const {addSoundAction, removeSoundAction} = actions
+	const {addSoundAction, removeSoundAction, resetSound} = actions
 	const removeClick = (id:number)=>{
 		dispatch(removeSoundAction(id))	
 	}
 	const actionClick = ()=>{	
-		dispatch(addSoundAction())	
+		dispatch(addSoundAction())
 	}
 	
-    
+	const clickReset =()=>{
+		dispatch(resetSound())
+	}
 	return (
 		<>
 			<View>
@@ -33,6 +35,8 @@ const SoundList = ():JSX.Element => {
 				)}	
 			</View>
 			<Button title='ADD' onPress={actionClick}/>
+			<Button title='reset' onPress={clickReset}/>
+
 		</>
 	)
 }

@@ -1,19 +1,19 @@
 import React from 'react'
-import Login from './pages/login'
-import Home from './pages/home'
+import Login from './pages/Login'
+import Navigation from './components/Navigation'
 import { useAuthentication } from './contextGlobals/ContextAuthentication'
 
-const Navigation = (): JSX.Element => {
+const Authentication = (): JSX.Element => {
 	
 	const {isPrivate} = useAuthentication()
 
 	return (
 		<>
 			{!isPrivate && <Login /> }
-			{isPrivate && <Home/> }
+			{isPrivate && <Navigation/> }
 		</>
 	)
 }
 
-export default  Navigation
+export default  Authentication
 

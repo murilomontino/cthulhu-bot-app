@@ -4,7 +4,7 @@ interface Body {
 	[key:string]: string
 }
 
-const expressDiscord = async (body:Body) =>{
+const expressDiscord = async (body:Body): Promise<Response> =>{
 	const rep = await fetch('http://192.168.0.7:3000/discord',
 		{
 			method: 'POST',

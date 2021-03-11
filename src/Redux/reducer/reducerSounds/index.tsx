@@ -1,16 +1,10 @@
-import { 
-	ADD_SOUND, 
-	DELETE_SOUND,
-	EDIT_SOUND,
-	EDIT_ICON,
-	EDIT_URL
-} from '../database/constant'
-import INITIAL_STATE from '../database/INITIAL_STATE.json'
-import { actionFunction } from '../interfaces'
+import Types from '../../database/constant'
+import INITIAL_STATE from '../../database/INITIAL_STATE.json'
+import { actionFunction } from '../..'
 
 export const ReducerSounds = (state=INITIAL_STATE, action:actionFunction) =>{
 	switch (action.type) {
-	case ADD_SOUND:
+	case Types.ADD_SOUND:
 		return {...state, sounds: [ ...state.sounds, 
 			{
 				id: action.sound.id,
@@ -20,7 +14,7 @@ export const ReducerSounds = (state=INITIAL_STATE, action:actionFunction) =>{
 				categoria: action.sound.categoria
 			}]}
 			
-	case DELETE_SOUND:{
+	case Types.DELETE_SOUND:{
 		const filter = state.sounds.filter(sound=>sound.id !== action.sound.id)
 		return {
 			...state,
@@ -29,15 +23,18 @@ export const ReducerSounds = (state=INITIAL_STATE, action:actionFunction) =>{
 			]
 		}
 	}
-	case EDIT_SOUND:{
+	case Types.EDIT_SOUND:{
 		break
 	}
-	case EDIT_ICON:{
+	case Types.EDIT_ICON:{
 		break
 	}
-	case EDIT_URL:{
+	case Types.EDIT_URL:{
 		break
 	}
+	case Types.RESET:
+
+		return INITIAL_STATE //Always return the initial state
 	
 	default:
 		return state

@@ -1,5 +1,0 @@
-export const ADD_SOUND = 'ADD_SOUND'
-export const DELETE_SOUND = 'DELETE_SOUND'
-export const EDIT_SOUND = 'EDIT_SOUND'
-export const EDIT_ICON = 'EDIT_ICON'
-export const EDIT_URL = 'EDIT_URL'
