@@ -1,5 +1,9 @@
 {
     "eslint.options": {
         "configFile": "E:/Workspace/discord_react_native/cthulhu-bot-app/.eslintrc.json"
-    }
+    },
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 12,
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "400"
 }

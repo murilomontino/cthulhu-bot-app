@@ -1,12 +1,16 @@
-import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import { SafeAreaView  } from 'react-native'
-import Authentication from './Authentication'
-import css from './styles'
-import ContextAuthProvider from './context/ContextAuthentication'
-import {Provider} from 'react-redux'
+
+import { StatusBar } from 'expo-status-bar'
+import { SafeAreaView  } from 'react-native-safe-area-context'
+
+import { Provider } from 'react-redux'
 import { store, persistedStore } from './redux'
 import { PersistGate } from 'redux-persist/es/integration/react'
+
+import css from './styles'
+import ContextAuthProvider from './context/ContextAuthentication'
+import Authentication from './Authentication'
+
 
 
 const App = (): JSX.Element => {	

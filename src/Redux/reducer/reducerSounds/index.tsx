@@ -49,7 +49,6 @@ export const ReducerSounds = (state=INITIAL_STATE, action:action): typeof INITIA
 	}
 	
 	case Types.reset:
-
 		return INITIAL_STATE //Always return the initial state
 	
 	default:
@@ -59,7 +58,7 @@ export const ReducerSounds = (state=INITIAL_STATE, action:action): typeof INITIA
 }
 
 
-
+// ACTIONS
 
 const addSoundAction = (title:string, id:number): payLoad =>{
 	return {
