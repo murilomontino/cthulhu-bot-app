@@ -1,7 +1,6 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { Provider } from 'react-redux'
 import { store, persistedStore } from './redux'
 import { PersistGate } from 'redux-persist/es/integration/react'
@@ -16,25 +15,27 @@ const App = (): JSX.Element => {
 
 
 	return (
-		<Provider store={store}>
+		<SafeAreaProvider>
+			<Provider store={store}>
 
-			<PersistGate persistor={persistedStore} loading={null}>
+				<PersistGate persistor={persistedStore} loading={null}>
 
-				<SafeAreaView style={css.container}>
+					<SafeAreaView style={css.container}>
 
-					<ContextAuthProvider>
+						<ContextAuthProvider>
 
-						<Authentication/>
+							<Authentication/>
 
-					</ContextAuthProvider>
+						</ContextAuthProvider>
 
-					<StatusBar style="auto" />
+						<StatusBar style="auto" />
 
-				</SafeAreaView>
+					</SafeAreaView>
 
-			</PersistGate>
+				</PersistGate>
 			
-		</Provider>
+			</Provider>
+		</SafeAreaProvider>
 	)
 }
 

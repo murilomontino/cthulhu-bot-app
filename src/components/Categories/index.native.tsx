@@ -15,7 +15,7 @@ const Category = ():JSX.Element =>{
 			</TouchableOpacity>
 			<Text style={css.textCategory}>Ação</Text>
 			
-			<CheckBox style={css.checkBox}/>:
+			<CheckBox style={css.checkBox}/>
 			
 			
 		</View>
