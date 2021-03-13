@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { View, Text, CheckBox } from 'react-native'
+import CheckBox from '@react-native-community/checkbox'
+import { View, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import css from './styles.js'
@@ -14,7 +15,8 @@ const Category = ():JSX.Element =>{
 			</TouchableOpacity>
 			<Text style={css.textCategory}>Ação</Text>
 			
-			<CheckBox style={css.checkBox}/>
+			<CheckBox style={css.checkBox}/>:
+			
 			
 		</View>
 	)

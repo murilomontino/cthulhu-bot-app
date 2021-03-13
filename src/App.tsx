@@ -1,7 +1,6 @@
 import React from 'react'
-
+import { SafeAreaView } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import { SafeAreaView  } from 'react-native-safe-area-context'
 
 import { Provider } from 'react-redux'
 import { store, persistedStore } from './redux'
