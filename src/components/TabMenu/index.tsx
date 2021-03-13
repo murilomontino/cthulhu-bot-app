@@ -1,5 +1,5 @@
-import { NavigationContainerRef, useNavigation } from '@react-navigation/native'
-import React from 'react'
+import { NavigationContainerRef } from '@react-navigation/native'
+import React, { Ref } from 'react'
 import { View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
@@ -9,11 +9,15 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import css from './styles'
 
-const TabMenu = (): JSX.Element => {
+
+interface Props{
+    navigation: NavigationContainerRef
+}
+
+const TabMenu = ({navigation}:Props): JSX.Element => {
 	const size = 32
 	const color = '#4dab66'
     
-	const navigation = useNavigation()
 	const onClick = (route:string)=>{
 		navigation.navigate(route)
 	}

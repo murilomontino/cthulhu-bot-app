@@ -3,21 +3,14 @@
     "jsx": "react-native",
     "target": "esnext",
     "lib": [
-      "esnext",
-      "DOM",
-      "DOM.Iterable",
-      
+      "esnext"
     ],
-    "module": "ESNext",
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    
+    "esModuleInterop": true,
     "moduleResolution": "node"
   }
 }

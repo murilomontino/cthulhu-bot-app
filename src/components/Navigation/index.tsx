@@ -40,9 +40,18 @@ const ButtonDrawer = ()=> {
 	
 const Navigation = ():JSX.Element => {
 
-	
+	const [loading, setLoading] = useState(true)
+	const navigationRef = useRef(null)
+
+	useEffect(() => {
+		if(navigationRef !== null)
+			setLoading(false)
+		
+	}, [])
+
+
 	return (
-		<NavigationContainer theme={themeDefault} >
+		<NavigationContainer theme={themeDefault} ref={navigationRef} >
 			<Stack.Navigator>
 				<Stack.Screen
 		
@@ -55,7 +64,7 @@ const Navigation = ():JSX.Element => {
 				<Stack.Screen name='Profile' component={Profile}/>
 			</Stack.Navigator>
 
-			<TabMenu/>
+			{!loading && <TabMenu navigation={navigationRef.current}/>}
 		</NavigationContainer>
 		
 	)
