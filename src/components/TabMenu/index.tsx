@@ -1,11 +1,9 @@
 import { NavigationContainerRef } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react'
 import { View } from 'react-native'
+import { Icon } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { useAuthentication } from '../../context/ContextAuthentication'
 
 import css from './styles'
 
@@ -14,27 +12,65 @@ interface Props{
     navigation: NavigationContainerRef
 }
 
+
+
 const TabMenu = ({navigation}:Props): JSX.Element => {
+	
+	const [selector, setSelector] = useState(true)
+
+	const {setIsPrivate} = useAuthentication()
+
 	const size = 32
-	const color = '#4dab66'
+	const color = '#fff'
     
+	const diceClick = () => setIsPrivate(false)
+
 	const onClick = (route:string)=>{
 		navigation.navigate(route)
+		const currentRoute = navigation.getCurrentRoute()
+
+		if(currentRoute?.name === 'SoundPad'){
+			setSelector(true)
+		}else{
+			setSelector(false)
+		}
+		
 	}
 
 	return (
 		<View style={css.container}>
-			<TouchableOpacity style={css.viewTouchable} onPress={()=> onClick('SoundPad')}>
-				<MaterialIcons name='queue-music' size={size} color={color} />
-			</TouchableOpacity>
-
-			<TouchableOpacity style={css.viewTouchable}>
-				<FontAwesome5 name='dice-d20' size={size} color={color} />
-			</TouchableOpacity>
 			
-			<TouchableOpacity style={css.viewTouchable} onPress={()=> onClick('Profile')}>
-				<FontAwesome name='gear' size={size} color={color}/>
-			</TouchableOpacity>
+			<View style={[css.viewTouchable, {
+				backgroundColor: selector? 'rgba(0,0,0, 0.2)': 'transparent'
+			}]}>
+
+				<TouchableOpacity 
+					style={css.touchableOpacity} 
+					onPress={()=> onClick('SoundPad')}>
+					<Icon type='material' name='queue-music' size={size} color={color} />
+				</TouchableOpacity>
+
+			</View>
+
+			<View style={css.viewTouchable}>
+
+				<TouchableOpacity style={css.touchableOpacity} onPress={diceClick}>
+					<Icon type='font-awesome-5' name='dice-d20' size={size} color={color} />
+				</TouchableOpacity>
+
+			</View>
+
+			<View style={[css.viewTouchable, {
+				backgroundColor: !selector? 'rgba(0,0,0, 0.2)': 'transparent'
+			}]}>
+				
+				<TouchableOpacity
+					style={css.touchableOpacity} onPress={()=> onClick('Profile')}>
+					<Icon type='font-awesome' name='gear' size={size} color={color} />
+				</TouchableOpacity>
+
+			</View>
+			
 		</View>
 	)
 }

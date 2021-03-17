@@ -8,16 +8,17 @@ import Profile from '../../pages/Profile'
 import DrawerCategories from '../DrawerCategories'
 import TabMenu from '../TabMenu'
 
-import Entypo from 'react-native-vector-icons/Entypo'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import css from './styles'
+import { View } from 'react-native'
+import { Icon } from 'react-native-elements'
 
 enableScreens()
 const Stack = createStackNavigator()
 const themeDefault = {
 	dark: true,
 	colors:  {
-		background: '#4dab66',
+		background: 'transparent',
 		card: '#fff',
 		primary: '#000', // Tela Em Escolha
 		text: '#000',
@@ -34,7 +35,7 @@ const ButtonDrawer = ()=> {
 	
 	return (
 		<TouchableOpacity style={css.touchable} onPress={onClick}>
-			<Entypo name='menu' size={32} color='#000' style={css.iconDrawer}/>
+			<Icon type='Entypo' name='menu' size={32} color='#000' containerStyle={css.iconDrawer} />
 		</TouchableOpacity>
 	)}
 	
@@ -52,16 +53,30 @@ const Navigation = ():JSX.Element => {
 
 	return (
 		<NavigationContainer theme={themeDefault} ref={navigationRef} >
-			<Stack.Navigator>
+			<Stack.Navigator screenOptions={{
+				headerTitleAlign: 'center',
+				headerStatusBarHeight: 1
+
+			}}
+			>
 				<Stack.Screen
 		
 					name='SoundPad' 
 					component={DrawerCategories}
 					options={{
-						headerLeft:ButtonDrawer,
+						headerLeft:ButtonDrawer
 					}}
 				/>
-				<Stack.Screen name='Profile' component={Profile}/>
+				<Stack.Screen 
+					name='Profile'
+					component={Profile}
+					options={{
+						headerLeft:function HeaderLeft(props){
+							return <View {...props}/>
+						},
+						title: 'Configurações'
+					}}
+				/>
 			</Stack.Navigator>
 
 			{!loading && <TabMenu navigation={navigationRef.current}/>}

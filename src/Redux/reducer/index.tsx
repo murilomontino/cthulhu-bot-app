@@ -17,6 +17,6 @@ export interface state {
 }
 
 export default combineReducers({
-	soundPadReducer: ReducerSounds
+	soundPadReducer: ReducerSounds,
 })
 

@@ -11,7 +11,13 @@ const Types = {
 
 interface payLoad {
 	type: string,
-	sound: {[key:string]:string|number}
+	sound?: {
+		id: number,
+		title?: string,
+		url?: string|undefined,
+		icon?: string|undefined,
+		categoria?: Array<string>|undefined 
+		}
 }
 
 interface action {
@@ -58,14 +64,25 @@ export const ReducerSounds = (state=INITIAL_STATE, action:action): typeof INITIA
 }
 
 
-// ACTIONS
 
-const addSoundAction = (title:string, id:number): payLoad =>{
+// ACTIONS
+interface sound {
+    id: number,
+    title?: string,
+    url?: string|undefined,
+    icon?: string|undefined,
+    categoria?: Array<string>|undefined 
+}
+
+const addSoundAction = (sound:sound): payLoad =>{
 	return {
 		type: Types.addSound, 
 		sound:{
-			id: id,
-			title: title
+			id: sound.id,
+			title: sound.title,
+			icon: sound.icon,
+			url: sound.url,
+			categoria: sound.categoria
 		}}
 }
 
@@ -73,7 +90,8 @@ const removeSoundAction = (id:number): payLoad =>{
 	return {
 		type: Types.removeSound, 
 		sound:{
-			id: id,
+			id: id
+		
 		}
 	}
 
@@ -82,9 +100,7 @@ const removeSoundAction = (id:number): payLoad =>{
 const resetSound = (): payLoad =>{
 	return {
 		type: Types.reset, 
-		sound:{
-			
-		}
+		
 	}
 
 }

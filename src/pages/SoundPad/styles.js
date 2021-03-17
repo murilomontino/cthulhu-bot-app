@@ -9,7 +9,11 @@ export default StyleSheet.create({
 		textAlign: 'center',
 		fontWeight: 'bold',
 		fontSize: 48
-
+	},
+	buttonFloating:{
+		position: 'absolute',
+		right: 0,
+		bottom: 0
 	}
 })
 

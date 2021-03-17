@@ -3,6 +3,7 @@ import React, {
 	createContext,
 	useContext,
 	useEffect,
+	Dispatch,
 	
 } from 'react'
 
@@ -108,7 +109,8 @@ const ContextAuthProvider = (props:Props):JSX.Element => {
 		<ContextAuth.Provider
 			value={{
 				sendToken,
-				isPrivate
+				isPrivate,
+				setIsPrivate
 			}}
 		>
 			<Spinner
@@ -124,16 +126,19 @@ const ContextAuthProvider = (props:Props):JSX.Element => {
 interface context {
 	isPrivate: boolean,
 	sendToken: (token: string) => Promise<void>
+	setIsPrivate: Dispatch<React.SetStateAction<boolean>>
 }
 
 export const useAuthentication = (): context => {
 	const {
 		sendToken,
-		isPrivate
+		isPrivate,
+		setIsPrivate
 	} = useContext(ContextAuth)
 	return {
 		sendToken,
-		isPrivate
+		isPrivate,
+		setIsPrivate
 	}
 }
 

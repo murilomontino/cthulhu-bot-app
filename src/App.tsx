@@ -8,33 +8,40 @@ import { PersistGate } from 'redux-persist/es/integration/react'
 import css from './styles'
 import ContextAuthProvider from './context/ContextAuthentication'
 import Authentication from './Authentication'
+import { LinearGradient } from 'expo-linear-gradient'
 
 
 
 const App = (): JSX.Element => {	
 
-
 	return (
 		<SafeAreaProvider>
+
 			<Provider store={store}>
 
 				<PersistGate persistor={persistedStore} loading={null}>
 
 					<SafeAreaView style={css.container}>
+						<LinearGradient 
+							colors={['#4dab66', '#27b34c', '#047021']} 
+							style={css.linearGradient}
 
-						<ContextAuthProvider>
+						>
+							
+							<ContextAuthProvider>
 
-							<Authentication/>
+								<Authentication/>
 
-						</ContextAuthProvider>
+							</ContextAuthProvider>
 
-						<StatusBar style="auto" />
-
+						</LinearGradient  >
 					</SafeAreaView>
 
 				</PersistGate>
 			
 			</Provider>
+			<StatusBar style='auto' hidden/>
+
 		</SafeAreaProvider>
 	)
 }

@@ -7,24 +7,27 @@ import {
 	KeyboardAvoidingView,
 	TextInput,
 	Platform,
-	
 } from 'react-native'
 import css from './styles'
 import Icon from 'react-native-vector-icons/Entypo'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import {useAuthentication} from '../../context/ContextAuthentication'
-
+import { useAuthentication } from '../../context/ContextAuthentication'
+import { useAssets } from 'expo-asset'
+import AppLoading from 'expo-app-loading'
 
 const LoginPage = (): JSX.Element => {
 
-	const {sendToken} = useAuthentication()
+	const {sendToken, setIsPrivate} = useAuthentication()
 	let token = ''
-	const logStorage = async ()=>{
-		const value = await AsyncStorage.getItem('@idBot')
-		console.log(value)
+	const [assets] = useAssets([require('../../../asserts/logo.png')])
+
+
+	const setTrueBot = () =>	setIsPrivate(true)
+	
+	if (!assets) {
+		return <AppLoading />
 	}
-	console.log('render')
-	// _getText()
+
+	
 	return (
 	
 		<View style={{
@@ -52,7 +55,7 @@ const LoginPage = (): JSX.Element => {
 			<View style={{
 				flex: 1
 			}}>
-				<TouchableOpacity style={css.containerTouchable} onPress={logStorage}>
+				<TouchableOpacity style={css.containerTouchable} onPress={setTrueBot}>
 					<Text style={css.touchableText}>Onde conseguir um token?</Text>
 				</TouchableOpacity>  
 			</View>

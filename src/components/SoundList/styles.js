@@ -3,8 +3,14 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
 	container: {
 		flex: 1,
+		alignContent: 'flex-start'
 	},
-	linearGradient:{
-		flex: 1
+	text:{
+		textAlign: 'center',
+		fontWeight: 'bold',
+		fontSize: 48
+
 	}
 })
+
+

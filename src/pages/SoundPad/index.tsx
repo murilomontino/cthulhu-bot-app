@@ -1,16 +1,30 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import css from './styles'
-import SoundList from './soundList'
+import SoundList from '../../components/SoundList'
+import ButtonFloating from '../../components/ButtonFloating'
+
 
 const SoundPad = (): JSX.Element => {
 	
-	return (
 
-		<View style={css.container} >
-			<Text style={css.text}>MONYSE GOSTOSA</Text>
-			<SoundList/>
+	return (
+		
+		<View style={css.container}	>
+			
+			<ScrollView>
+				
+				<SoundList/>
+
+			</ScrollView>
+			
+			<View style={css.buttonFloating}>
+				<ButtonFloating/>
+			</View>
+			
 		</View>
+		
+		
 	)
 }
 

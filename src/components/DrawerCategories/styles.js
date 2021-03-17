@@ -22,19 +22,21 @@ export default StyleSheet.create({
 		fontWeight: 'bold',
 		fontSize: 16
 	},
-	viewCategories:{
-		flex: 7,
+	scrollCategories:{
+		flex: 4,
 	},
 	footer:{
 		flex: 1,
+		backgroundColor: '#fff',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		borderTopColor: '#000',
+		minHeight: 60,
+		maxHeight: 60,
 		borderTopWidth: 1
 	},
 	buttonFooter:{
 		flex: 1,
-		padding: 20,
 		alignItems: 'center',
 		justifyContent: 'center',
 	}, 
