@@ -3,31 +3,28 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { useAuthentication } from '../../context/ContextAuthentication'
 
 import css from './styles'
 
 
 interface Props{
-    navigation: NavigationContainerRef
+    navigation: NavigationContainerRef | null,
 }
 
 
 
-const TabMenu = ({navigation}:Props): JSX.Element => {
+const TabMenu: React.FC<Props> = ({navigation}:Props) => {
 	
 	const [selector, setSelector] = useState(true)
 
-	const {setIsPrivate} = useAuthentication()
 
 	const size = 32
 	const color = '#fff'
     
-	const diceClick = () => setIsPrivate(false)
 
-	const onClick = (route:string)=>{
-		navigation.navigate(route)
-		const currentRoute = navigation.getCurrentRoute()
+	const onRouteClick = (route:string)=>{
+		navigation?.navigate(route)
+		const currentRoute = navigation?.getCurrentRoute()
 
 		if(currentRoute?.name === 'SoundPad'){
 			setSelector(true)
@@ -46,7 +43,7 @@ const TabMenu = ({navigation}:Props): JSX.Element => {
 
 				<TouchableOpacity 
 					style={css.touchableOpacity} 
-					onPress={()=> onClick('SoundPad')}>
+					onPress={()=> onRouteClick('SoundPad')}>
 					<Icon type='material' name='queue-music' size={size} color={color} />
 				</TouchableOpacity>
 
@@ -54,7 +51,7 @@ const TabMenu = ({navigation}:Props): JSX.Element => {
 
 			<View style={css.viewTouchable}>
 
-				<TouchableOpacity style={css.touchableOpacity} onPress={diceClick}>
+				<TouchableOpacity style={css.touchableOpacity}>
 					<Icon type='font-awesome-5' name='dice-d20' size={size} color={color} />
 				</TouchableOpacity>
 
@@ -65,12 +62,13 @@ const TabMenu = ({navigation}:Props): JSX.Element => {
 			}]}>
 				
 				<TouchableOpacity
-					style={css.touchableOpacity} onPress={()=> onClick('Profile')}>
+					style={css.touchableOpacity} onPress={()=> onRouteClick('Profile')}>
 					<Icon type='font-awesome' name='gear' size={size} color={color} />
 				</TouchableOpacity>
 
 			</View>
 			
+
 		</View>
 	)
 }

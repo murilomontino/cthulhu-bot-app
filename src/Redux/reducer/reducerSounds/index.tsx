@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { Sound, SoundState , ActionSound } from '../typesReducer'
 import INITIAL_STATE from './INITIAL_STATE.json'
 
 
@@ -5,47 +7,22 @@ const Types = {
 	addSound: 'SOUND/ADD',
 	removeSound: 'SOUND/REMOVE',
 	reset: 'SOUND/RESET',
-
-
 }
 
-interface payLoad {
-	type: string,
-	sound?: {
-		id: number,
-		title?: string,
-		url?: string|undefined,
-		icon?: string|undefined,
-		categoria?: Array<string>|undefined 
-		}
-}
-
-interface action {
-    type:string,
-	sound: {
-	id: number,
-    title: string,
-    url?: string|undefined,
-    icon?: string|undefined,
-    categoria?: Array<string>|undefined 
-	}
-}
-
-
-export const ReducerSounds = (state=INITIAL_STATE, action:action): typeof INITIAL_STATE =>{
+export const ReducerSounds = (state:SoundState=INITIAL_STATE, action:ActionSound) => {
 	switch (action.type) {
 	case Types.addSound:
 		return {...state, sounds: [ ...state.sounds, 
 			{
-				id: action.sound.id,
-				title: action.sound.title,
-				url: action.sound.url,
-				icon: action.sound.icon,
-				categoria: action.sound.categoria
+				id: action.sound?.id,
+				title: action.sound?.title,
+				url: action.sound?.url,
+				icon: action.sound?.icon,
+				categoria: action.sound?.categoria
 			}]}
 			
 	case Types.removeSound:{
-		const filter = state.sounds.filter(sound=>sound.id !== action.sound.id)
+		const filter = state.sounds.filter(sound=>sound.id !== action.sound?.id)
 		return {
 			...state,
 			sounds: [
@@ -63,18 +40,7 @@ export const ReducerSounds = (state=INITIAL_STATE, action:action): typeof INITIA
 	}
 }
 
-
-
-// ACTIONS
-interface sound {
-    id: number,
-    title?: string,
-    url?: string|undefined,
-    icon?: string|undefined,
-    categoria?: Array<string>|undefined 
-}
-
-const addSoundAction = (sound:sound): payLoad =>{
+const addSoundAction = (sound:Sound): ActionSound =>{
 	return {
 		type: Types.addSound, 
 		sound:{
@@ -86,7 +52,7 @@ const addSoundAction = (sound:sound): payLoad =>{
 		}}
 }
 
-const removeSoundAction = (id:number): payLoad =>{
+const removeSoundAction = (id:number): ActionSound =>{
 	return {
 		type: Types.removeSound, 
 		sound:{
@@ -97,7 +63,7 @@ const removeSoundAction = (id:number): payLoad =>{
 
 }
 
-const resetSound = (): payLoad =>{
+const resetSound = (): ActionSound =>{
 	return {
 		type: Types.reset, 
 		

@@ -1,25 +1,13 @@
 import React from 'react'
 import { FlatList } from 'react-native'
 import { useSelector } from 'react-redux'
-import Category from '../../../Categories'
 
+import Category from '../Categories'
+import { StateReducer } from '../../redux/reducer/typesReducer'
 
-interface sound {
-    id: number,
-    title: string,
-    url?: string|undefined,
-    icon?: string|undefined,
-    categoria?: Array<string>|undefined 
-}
-
-interface state {
-	soundPadReducer: {
-        sounds: sound[]
-    }
-}
 
 const getCategories = ()=>{
-	const categoriesReducer = useSelector((state:state) => state.soundPadReducer.sounds.map(sound =>
+	const categoriesReducer = useSelector((state:StateReducer) => state.soundPadReducer.sounds.map(sound =>
 		sound.categoria)) /// end category 
 	
 	const categories:string[] = []
@@ -28,7 +16,7 @@ const getCategories = ()=>{
 	return [ ...new Set( categories ) ]
 }
 
-const ListCategories = ():JSX.Element => {
+const ListCategories:React.FC = ()=> {
 	
 	const DATA = getCategories()
 	
