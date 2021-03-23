@@ -23,14 +23,17 @@ const TabMenu: React.FC<Props> = ({navigation}:Props) => {
     
 
 	const onRouteClick = (route:string)=>{
-		navigation?.navigate(route)
-		const currentRoute = navigation?.getCurrentRoute()
-
-		if(currentRoute?.name === 'SoundPad'){
-			setSelector(true)
-		}else{
-			setSelector(false)
+		if(navigation){
+			navigation.navigate(route)
+			const currentRoute = navigation.getCurrentRoute()
+	
+			if(currentRoute && currentRoute.name === 'SoundPad'){
+				setSelector(true)
+			}else{
+				setSelector(false)
+			}
 		}
+			
 		
 	}
 

@@ -14,7 +14,7 @@ import { View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import Dice from '../Dice'
 
-enableScreens()
+// enableScreens()
 const Stack = createStackNavigator()
 const themeDefault = {
 	dark: true,

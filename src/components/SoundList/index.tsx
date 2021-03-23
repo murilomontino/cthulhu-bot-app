@@ -1,8 +1,10 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { StateReducer, Sound as SoundType, ActionSound } from '../../redux/reducer/typesReducer'
-import actions from '../../redux/reducer/reducerSounds'
+
+import actions from '../../redux/reducer/sounds/actions'
+import { Sound as SoundType } from '../../redux/reducer/sounds/types'
+import { ApplicationState } from '../../redux'
 
 import css from './styles'
 import { Dispatch } from 'redux'
@@ -18,7 +20,7 @@ interface Props {
 
 const Sound: React.FC<Props> = ({sound}:Props)=>{
 	
-	const dispatch: Dispatch<ActionSound> = useDispatch()
+	const dispatch: Dispatch = useDispatch()
 
 	const { removeSoundAction } = actions
 	const removeClick = (id:number)=>{
@@ -41,10 +43,10 @@ const Sound: React.FC<Props> = ({sound}:Props)=>{
 
 const SoundList: React.FC = () => {
 	
-	const sounds = useSelector((state:StateReducer) => state.soundPadReducer.sounds )
+	const sounds = useSelector((state:ApplicationState) => state.SoundState.sounds )
 
 	
-	const dispatch: Dispatch<ActionSound> = useDispatch()
+	const dispatch: Dispatch = useDispatch()
 	
 	const { resetSound} = actions
 	

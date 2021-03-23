@@ -1,18 +1,19 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "jsx": "react-native",
-    "target": "esnext",
-    "lib": [
-      "esnext"
-    ],
-    "strict": true,
+    "lib": ["ES2020"],
+   
+    "module": "commonjs",
+    "target": "ES2020",
     "allowJs": true,
+    "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "moduleResolution": "node"
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "__tests__/*.(spec|test).ts"]
 }

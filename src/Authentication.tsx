@@ -8,6 +8,7 @@ const Authentication = (): JSX.Element => {
 	
 	const {isPrivate} = useAuthentication()
 
+
 	return (
 		<>
 			{!isPrivate && <Login /> }
