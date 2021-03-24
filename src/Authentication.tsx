@@ -2,7 +2,6 @@ import React from 'react'
 import Login from './pages/Login'
 import Navigation from './components/Navigation'
 import { useAuthentication } from './context/ContextAuthentication'
-// import { connectActionSheet } from '@expo/react-native-action-sheet'
 
 const Authentication = (): JSX.Element => {
 	
@@ -17,5 +16,5 @@ const Authentication = (): JSX.Element => {
 	)
 }
 
-export default Authentication
+export default  Authentication
 

@@ -1,11 +1,8 @@
 import React from 'react'
-
-
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { Provider } from 'react-redux'
 import { store, persistedStore } from './redux'
-
 import ContextAuthProvider from './context/ContextAuthentication'
 import Authentication from './Authentication'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -15,10 +12,11 @@ import { PersistGate } from 'redux-persist/es/integration/react'
 
 import css from './styles'
 
-const App: React.FC = () => {	
-	
+const App:React.FC = () => {	
+
 	return (
 		<SafeAreaProvider>
+
 			<Provider store={store}>
 
 				<PersistGate persistor={persistedStore} loading={null}>
@@ -43,10 +41,10 @@ const App: React.FC = () => {
 			
 			</Provider>
 			<StatusBar style='auto' hidden/>
+
 		</SafeAreaProvider>
 	)
 }
-
 
 export default App
 

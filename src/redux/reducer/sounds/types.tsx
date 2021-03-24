@@ -10,13 +10,13 @@ export enum SoundsTypes  {
 export type Sound =  {
     id: number,
     title?: string,
-    url?: string|undefined,
-    icon?: string|undefined,
-    categoria?: Array<string>|undefined 
+    url?: string,
+    icon?: string,
+    categoria?: Array<string>
 }
 
 // State Type
 
 export interface SoundState {
-    readonly sounds: Sound[]
+    sounds: Sound[]
 }

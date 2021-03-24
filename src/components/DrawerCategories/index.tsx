@@ -1,21 +1,21 @@
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import SoundPad from '../../pages/SoundPad'
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
-import css from './styles'
 import Category from '../Categories'
 import { useSelector } from 'react-redux'
 import { Icon } from 'react-native-elements'
-import { StateReducer, Sound } from '../../redux/reducer/typesReducer'
+import SoundPad from '../../pages/SoundPad'
+import css from './styles'
+import {ApplicationState} from '../../redux'
 
 
 const Drawer = createDrawerNavigator()
 
 const getCategories = ()=>{
-	const categoriesReducer = useSelector((state:StateReducer) => state.soundPadReducer.sounds.map(sound =>
+	const categoriesReducer = useSelector((state:ApplicationState) => state.SoundsState.sounds.map(sound =>
 		sound.categoria)) /// end category 
 	
-	const categories:string[] = []
+	const categories: string[] = []
 	categoriesReducer.forEach(categorias=>categorias?.map(category=>categories.push(category)))
 	
 	return [ ...new Set( categories ) ]
@@ -24,7 +24,7 @@ const getCategories = ()=>{
 interface Props{
 	categories: string[] | undefined
 }
-const Categories: React.FC<Props> = ({categories}:Props) =>{
+const Categories = ({categories}:Props):JSX.Element =>{
 	
 	const renderCategory = ({item}:{item:string})=>(<Category title={item}/>)
 
@@ -69,7 +69,7 @@ const Categories: React.FC<Props> = ({categories}:Props) =>{
 }
 
 
-const DrawerCategories: React.FC = () => {
+const DrawerCategories = ():JSX.Element => {
 	
 	const categories = getCategories()
 

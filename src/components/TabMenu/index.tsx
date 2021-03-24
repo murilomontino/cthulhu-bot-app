@@ -3,35 +3,36 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useAuthentication } from '../../context/ContextAuthentication'
 
 import css from './styles'
 
 
 interface Props{
-    navigation: NavigationContainerRef | null,
+    navigation: NavigationContainerRef
 }
 
 
 
-const TabMenu: React.FC<Props> = ({navigation}:Props) => {
+const TabMenu = ({navigation}:Props): JSX.Element => {
 	
 	const [selector, setSelector] = useState(true)
 
+	const {setIsPrivate} = useAuthentication()
 
 	const size = 32
 	const color = '#fff'
     
+	const diceClick = () => setIsPrivate(false)
 
-	const onRouteClick = (route:string)=>{
-		if(navigation){
-			navigation.navigate(route)
-			const currentRoute = navigation.getCurrentRoute()
-	
-			if(currentRoute && currentRoute.name === 'SoundPad'){
-				setSelector(true)
-			}else{
-				setSelector(false)
-			}
+	const onClick = (route:string)=>{
+		navigation.navigate(route)
+		const currentRoute = navigation.getCurrentRoute()
+
+		if(currentRoute?.name === 'SoundPad'){
+			setSelector(true)
+		}else{
+			setSelector(false)
 		}
 			
 		
@@ -46,7 +47,7 @@ const TabMenu: React.FC<Props> = ({navigation}:Props) => {
 
 				<TouchableOpacity 
 					style={css.touchableOpacity} 
-					onPress={()=> onRouteClick('SoundPad')}>
+					onPress={()=> onClick('SoundPad')}>
 					<Icon type='material' name='queue-music' size={size} color={color} />
 				</TouchableOpacity>
 
@@ -54,7 +55,7 @@ const TabMenu: React.FC<Props> = ({navigation}:Props) => {
 
 			<View style={css.viewTouchable}>
 
-				<TouchableOpacity style={css.touchableOpacity}>
+				<TouchableOpacity style={css.touchableOpacity} onPress={diceClick}>
 					<Icon type='font-awesome-5' name='dice-d20' size={size} color={color} />
 				</TouchableOpacity>
 
@@ -65,13 +66,12 @@ const TabMenu: React.FC<Props> = ({navigation}:Props) => {
 			}]}>
 				
 				<TouchableOpacity
-					style={css.touchableOpacity} onPress={()=> onRouteClick('Profile')}>
+					style={css.touchableOpacity} onPress={()=> onClick('Profile')}>
 					<Icon type='font-awesome' name='gear' size={size} color={color} />
 				</TouchableOpacity>
 
 			</View>
 			
-
 		</View>
 	)
 }

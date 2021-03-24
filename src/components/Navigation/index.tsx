@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import { enableScreens } from 'react-native-screens'
-import {   DrawerActions, NavigationContainer, NavigationContainerRef, useNavigation } from '@react-navigation/native'
+import {   DrawerActions, NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 
@@ -12,9 +12,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import css from './styles'
 import { View } from 'react-native'
 import { Icon } from 'react-native-elements'
-import Dice from '../Dice'
 
-// enableScreens()
+enableScreens()
 const Stack = createStackNavigator()
 const themeDefault = {
 	dark: true,
@@ -27,10 +26,9 @@ const themeDefault = {
 		border: '#000'
 	}
 }
-const ButtonDrawer = ():JSX.Element=> {
+const ButtonDrawer = ()=> {
 
 	const navigation = useNavigation()
-
 	const onClick = () => {
 		navigation.dispatch(DrawerActions.toggleDrawer())
 	}
@@ -41,10 +39,10 @@ const ButtonDrawer = ():JSX.Element=> {
 		</TouchableOpacity>
 	)}
 	
-const Navigation: React.FC = ()=> {
+const Navigation = ():JSX.Element => {
 
 	const [loading, setLoading] = useState(true)
-	const navigationRef = useRef<NavigationContainerRef>(null)
+	const navigationRef = useRef(null)
 
 	useEffect(() => {
 		if(navigationRef !== null)
@@ -69,12 +67,6 @@ const Navigation: React.FC = ()=> {
 						headerLeft:ButtonDrawer
 					}}
 				/>
-				
-				<Stack.Screen 
-					name='Dice'
-					component={Dice}
-				/>
-
 				<Stack.Screen 
 					name='Profile'
 					component={Profile}
@@ -87,10 +79,7 @@ const Navigation: React.FC = ()=> {
 				/>
 			</Stack.Navigator>
 
-			{!loading && <TabMenu navigation={navigationRef.current} />}
-
-	
-
+			{!loading && <TabMenu navigation={navigationRef.current}/>}
 		</NavigationContainer>
 		
 	)

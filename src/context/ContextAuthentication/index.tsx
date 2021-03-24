@@ -4,8 +4,6 @@ import React, {
 	useContext,
 	useEffect,
 	Dispatch,
-	ReactNode,
-	SetStateAction,
 	
 } from 'react'
 
@@ -14,22 +12,14 @@ import { Alert, Platform } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 
 
-type propsProvider = {
-	isPrivate: boolean,
-	sendToken: (token: string) => Promise<void>
-	setIsPrivate: Dispatch<React.SetStateAction<boolean>>
-} | undefined
-
-const ContextAuth = createContext<propsProvider>(undefined)
-
+const ContextAuth = createContext(null)
 
 interface Props {
-	children: ReactNode
-}
+	children: JSX.Element
+} 
 
-const ContextAuthProvider = ({children}:Props):JSX.Element => {
+const ContextAuthProvider = (props:Props):JSX.Element => {
 
-	
 	const [isPrivate, setIsPrivate] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	
@@ -94,6 +84,7 @@ const ContextAuthProvider = ({children}:Props):JSX.Element => {
 			
 			
 		}else {
+			console.log(Platform.Version) 
 			
 			setTimeout(() => {
 				setIsLoading(false)
@@ -116,41 +107,37 @@ const ContextAuthProvider = ({children}:Props):JSX.Element => {
 	
 	return (
 		<ContextAuth.Provider
-			value={
-				{
-					sendToken,
-					isPrivate,
-					setIsPrivate
-				}
-			}
+			value={{
+				sendToken,
+				isPrivate,
+				setIsPrivate
+			}}
 		>
 			<Spinner
 				visible={isLoading}
 				size='large'
 				textContent={'Logando...'}
 			/>
-			{children}
+			{props.children}
 		</ContextAuth.Provider>
 	)
 }
 
 interface context {
-	isPrivate: boolean | undefined,
-	sendToken: ((token: string) => Promise<void>)| undefined
-	setIsPrivate: (Dispatch<SetStateAction<boolean>>) | undefined
+	isPrivate: boolean,
+	sendToken: (token: string) => Promise<void>
+	setIsPrivate: Dispatch<React.SetStateAction<boolean>>
 }
 
 export const useAuthentication = (): context => {
-	
-	const context = useContext(ContextAuth)
-	
-	const isPrivate = context?.isPrivate
-	const sendToken = context?.sendToken
-	const setIsPrivate = context?.setIsPrivate
-	
-	return {
-		isPrivate,
+	const {
 		sendToken,
+		isPrivate,
+		setIsPrivate
+	} = useContext(ContextAuth)
+	return {
+		sendToken,
+		isPrivate,
 		setIsPrivate
 	}
 }

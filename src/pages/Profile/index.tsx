@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 
 
-const Profile: React.FC = ()=> {
+const Profile = ():JSX.Element => {
 	
 	return (
 		<View>

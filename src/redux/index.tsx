@@ -9,11 +9,11 @@ import { SoundState } from './reducer/sounds/types'
 const persistConfig = {
 	key: 'root',
 	storage: AsyncStorage,
-	whitelist: ['soundPadReducer']
+	whitelist: ['rootReducers']
 }
 
 export interface ApplicationState {
-	SoundState: SoundState
+	SoundsState: SoundState
 }
 
 const reducers = persistReducer(persistConfig, rootReducers)

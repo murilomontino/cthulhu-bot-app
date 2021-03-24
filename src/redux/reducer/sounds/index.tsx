@@ -1,11 +1,10 @@
 import { SoundState, SoundsTypes } from './types'
 import initial_sounds from './initial_sounds.json'
 import { Reducer } from 'redux'
-const sounds = initial_sounds.sounds
 
-const INITIAL_STATE: SoundState = {
-	sounds
-}
+const INITIAL_STATE: SoundState  = {
+	sounds: initial_sounds.sounds
+} 
 
 
 const reducer: Reducer<SoundState> = (state=INITIAL_STATE, action) => {
@@ -22,6 +21,8 @@ const reducer: Reducer<SoundState> = (state=INITIAL_STATE, action) => {
 			
 	case SoundsTypes.removeSound:{
 		const filter = state.sounds.filter(sound=>sound.id !== action.sound?.id)
+		console.log('chega aki')
+		
 		return {
 			...state,
 			sounds: [

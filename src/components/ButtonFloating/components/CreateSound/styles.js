@@ -2,22 +2,15 @@ import { Dimensions, StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
 	viewContainer:{
-		flex: 2,
-		minHeight: 200,
+		flex: 1,
 		position: 'relative',
-		width: Dimensions.get('window').width - 25,
+		height: 'auto',
+		
+		width: Dimensions.get('window').width,
 		backgroundColor: '#fff',
-		justifyContent: 'center',
-		alignItems: 'center',
-		alignSelf: 'center',
-		borderRadius: 10,
-		marginTop: 10
 		// bottom: 200,
 		// right: 0
 			
-	},
-	inputView:{
-		width: Dimensions.get('window').width - 25
 	},
 	inputStyle:{
 		marginHorizontal: 10,
@@ -25,17 +18,13 @@ export default StyleSheet.create({
 		borderBottomWidth: 1,
 		borderColor: '#000',
 		padding: 5,
-		textAlign: 'center',
-		width: '75%',
-		alignSelf: 'center',
-
+		textAlign: 'center'
+	
 	},
 	touchableOptions:{
 		padding: 15,
 	},
 	avatarStyle:{
-		minHeight: 75,
-		maxHeight: 75,
 		backgroundColor: '#fff',
 		flex: 1,
 		alignSelf: 'center',
