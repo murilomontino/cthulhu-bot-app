@@ -1,12 +1,23 @@
-import React from 'react'
-import renderer, { ReactTestRendererTree } from 'react-test-renderer'
+import 'react-native'
 
-import App from '../src/App'
+import React from 'react'
+import {cleanup, render} from '@testing-library/react-native'
+
+import Login from '../src/pages/Login'
+
+import MockedAsyncStorage from '../__mocks__/@react-native-async-storage/async-storage'
+
+
+
+afterEach(()=>{
+	jest.mock('@react-native-async-storage/async-storage', () => MockedAsyncStorage)
+
+})
 
 describe('<App />', () => {
-	it('has 2 child', () => {
-		const tree = renderer.create(<App />).toTree()
-		expect(tree?.children?.length).toBe(1)
-		
+	
+	it('renders correctly', () => {
+		const {toJSON} = render(<Login.prototype/>)
+		expect(toJSON()).toMatchSnapshot()
 	})
 })

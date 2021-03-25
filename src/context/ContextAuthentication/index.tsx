@@ -11,8 +11,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Alert, Platform } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 
+interface AuthContext {
+	isPrivate: boolean,
+	sendToken: (token: string) => Promise<void>
+	setIsPrivate: Dispatch<React.SetStateAction<boolean>>
+}
 
-const ContextAuth = createContext(null)
+const ContextAuth = createContext<AuthContext|null>(null)
 
 interface Props {
 	children: JSX.Element
@@ -123,18 +128,13 @@ const ContextAuthProvider = (props:Props):JSX.Element => {
 	)
 }
 
-interface context {
-	isPrivate: boolean,
-	sendToken: (token: string) => Promise<void>
-	setIsPrivate: Dispatch<React.SetStateAction<boolean>>
-}
 
-export const useAuthentication = (): context => {
-	const {
-		sendToken,
-		isPrivate,
-		setIsPrivate
-	} = useContext(ContextAuth)
+
+export const useAuthentication = () => {
+	const context = useContext(ContextAuth)
+	const sendToken = context?.sendToken
+	const isPrivate = context?.isPrivate
+	const setIsPrivate = context?.setIsPrivate
 	return {
 		sendToken,
 		isPrivate,

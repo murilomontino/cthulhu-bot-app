@@ -1,5 +1,5 @@
 module.exports = {
-	preset: 'jest-expo',
+	preset: 'react-native',
 	testEnvironment: 'jsdom',
 	globals: {
 		'ts-jest': {
@@ -22,7 +22,7 @@ module.exports = {
 	],
 	moduleFileExtensions: ['js', 'ts', 'tsx'],
 	transformIgnorePatterns: [
-		'node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|redux-persist|redux-persist/.*|react-native-screens)',
+		'node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|redux-persist|redux-persist/.*|react-native-screens|react-native-screens/.*|@react-native-async-storage/async-storage)',
 	],
 	coverageReporters: ['json-summary', 'text', 'lcov'],
 }

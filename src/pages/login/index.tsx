@@ -8,20 +8,26 @@ import {
 	TextInput,
 	Platform,
 } from 'react-native'
-import css from './styles'
+
 import Icon from 'react-native-vector-icons/Entypo'
 import { useAuthentication } from '../../context/ContextAuthentication'
 import { useAssets } from 'expo-asset'
 import AppLoading from 'expo-app-loading'
 
-const LoginPage = (): JSX.Element => {
+import css from './styles'
+
+
+const LoginPage: React.FC = ()=> {
 
 	const {sendToken, setIsPrivate} = useAuthentication()
 	let token = ''
 	const [assets] = useAssets([require('../../../asserts/logo.png')])
 
 
-	const setTrueBot = () =>	setIsPrivate(true)
+	const setTrueBot = () =>{
+		if(setIsPrivate)
+			setIsPrivate(true)
+	}
 	
 	if (!assets) {
 		return <AppLoading />
@@ -44,7 +50,13 @@ const LoginPage = (): JSX.Element => {
 						placeholder='Token'
 						onChangeText={ text => token = text	}
 					/>
-					<TouchableOpacity style={css.touchableIcon} onPress={()=> sendToken(token)}>
+					<TouchableOpacity 
+						style={css.touchableIcon} 
+						onPress={()=> {
+							if(sendToken)
+								sendToken(token)
+						}}
+					>
 						<Icon style={css.icon}name="chevron-right" size={40} color="black" />
 					</TouchableOpacity>
 				</View>

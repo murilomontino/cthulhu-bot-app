@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import { enableScreens } from 'react-native-screens'
-import {   DrawerActions, NavigationContainer, useNavigation } from '@react-navigation/native'
+import {   DrawerActions, NavigationContainer, NavigationContainerRef, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 
@@ -13,7 +13,7 @@ import css from './styles'
 import { View } from 'react-native'
 import { Icon } from 'react-native-elements'
 
-enableScreens()
+// enableScreens()
 const Stack = createStackNavigator()
 const themeDefault = {
 	dark: true,
@@ -42,7 +42,7 @@ const ButtonDrawer = ()=> {
 const Navigation = ():JSX.Element => {
 
 	const [loading, setLoading] = useState(true)
-	const navigationRef = useRef(null)
+	const navigationRef = useRef<NavigationContainerRef>(null)
 
 	useEffect(() => {
 		if(navigationRef !== null)
@@ -79,7 +79,7 @@ const Navigation = ():JSX.Element => {
 				/>
 			</Stack.Navigator>
 
-			{!loading && <TabMenu navigation={navigationRef.current}/>}
+			{!loading && <TabMenu navigationRef={navigationRef.current}/>}
 		</NavigationContainer>
 		
 	)

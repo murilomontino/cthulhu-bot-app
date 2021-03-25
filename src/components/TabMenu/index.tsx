@@ -9,12 +9,12 @@ import css from './styles'
 
 
 interface Props{
-    navigation: NavigationContainerRef
+    navigationRef: NavigationContainerRef | null
 }
 
 
 
-const TabMenu = ({navigation}:Props): JSX.Element => {
+const TabMenu = ({navigationRef}:Props): JSX.Element => {
 	
 	const [selector, setSelector] = useState(true)
 
@@ -23,11 +23,16 @@ const TabMenu = ({navigation}:Props): JSX.Element => {
 	const size = 32
 	const color = '#fff'
     
-	const diceClick = () => setIsPrivate(false)
+	const diceClick = () => {
+		if (setIsPrivate) {
+			setIsPrivate(false)	
+		}
+		
+	}
 
 	const onClick = (route:string)=>{
-		navigation.navigate(route)
-		const currentRoute = navigation.getCurrentRoute()
+		navigationRef?.navigate(route)
+		const currentRoute = navigationRef?.getCurrentRoute()
 
 		if(currentRoute?.name === 'SoundPad'){
 			setSelector(true)
