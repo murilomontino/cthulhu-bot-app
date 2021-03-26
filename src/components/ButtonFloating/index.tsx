@@ -5,9 +5,9 @@ import { Icon} from 'react-native-elements'
 
 import css from './styles'
 
-import CreateSound from './components/CreateSound'
+import CreateSound from '../CreateSound'
 
-const ButtonFloating = ():JSX.Element => {
+const ButtonFloating: React.FC = () => {
 	
 	const [visible, setVisible] = useState(false)
 	

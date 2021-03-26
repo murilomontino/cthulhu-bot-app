@@ -3,7 +3,7 @@ import Login from './pages/Login'
 import Navigation from './components/Navigation'
 import { useAuthentication } from './context/ContextAuthentication'
 
-const Authentication = (): JSX.Element => {
+const Authentication: React.FC = ()=> {
 	
 	const {isPrivate} = useAuthentication()
 

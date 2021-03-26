@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 // import {createLogger} from 'redux-logger'
 
 import { SoundState } from './reducer/sounds/types'
+import { CategoriesState } from './reducer/categories/types'
 
 const persistConfig = {
 	key: 'root',
@@ -13,7 +14,8 @@ const persistConfig = {
 }
 
 export interface ApplicationState {
-	SoundsState: SoundState
+	SoundsState: SoundState,
+	CategoryState: CategoriesState
 }
 
 const reducers = persistReducer(persistConfig, rootReducers)

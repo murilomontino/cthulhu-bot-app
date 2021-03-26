@@ -65,4 +65,9 @@ buck-out/
 web-build/
 
 # VS Code
+.vscode
 .vscode/*
+
+# Yarn
+.yarn
+.yarn/*

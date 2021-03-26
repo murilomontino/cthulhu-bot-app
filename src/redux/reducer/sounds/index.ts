@@ -21,8 +21,7 @@ const reducer: Reducer<SoundState> = (state=INITIAL_STATE, action) => {
 			
 	case SoundsTypes.removeSound:{
 		const filter = state.sounds.filter(sound=>sound.id !== action.sound?.id)
-		console.log('chega aki')
-		
+
 		return {
 			...state,
 			sounds: [

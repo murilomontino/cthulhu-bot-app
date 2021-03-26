@@ -1,12 +1,13 @@
 import React from 'react'
+
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { Provider } from 'react-redux'
 import { store, persistedStore } from './redux'
-import ContextAuthProvider from './context/ContextAuthentication'
-import Authentication from './Authentication'
 import { LinearGradient } from 'expo-linear-gradient'
 
+import ContextAuthProvider from './context/ContextAuthentication'
+import Authentication from './Authentication'
 
 import { PersistGate } from 'redux-persist/es/integration/react'
 

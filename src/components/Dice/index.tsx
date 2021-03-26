@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-const Dice = ():JSX.Element => {
+const Dice: React.FC = () => {
 	return (
 		<View>
 		</View>

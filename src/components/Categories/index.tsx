@@ -1,39 +1,57 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { CheckBox, Icon } from 'react-native-elements'
-import { View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import css from './styles.js'
+import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+
+import css from './styles'
+import Category from '../Category'
+import { Icon } from 'react-native-elements'
 
 interface Props{
-	title: string,
+	categories: string[] | undefined
 }
 
-const Category = ({title}:Props):JSX.Element =>{
-
-	const [select, setSelect] = useState(false)
+const Categories: React.FC<Props> = ({categories}:Props)=>{
+	
+	const renderCategory = ({item}:{item:string})=>(<Category title={item}/>)
 
 	return (
-		<View style={css.viewCategory}>
+		<SafeAreaView style={css.container}>
+			<View style={css.viewContainer}>
+				
+				<View style={css.viewTitle}>
+					<Text style={css.textTitle}>CATEGORIAS</Text>
+				</View>
+
+				
+				<FlatList
+					data={categories}
+					keyExtractor={(item) => item}
+					renderItem={renderCategory}
+					style={{
+						maxHeight: '80%'
+					}}
+					
+				/>
+					
+				<View style={css.footer}>
+
+					<TouchableOpacity style={css.buttonFooter}>
+						<Text style={css.textFooter}>{'SELECT \n ALL'}</Text>
+					</TouchableOpacity>
+	
+					<TouchableOpacity style={css.buttonFooter}>
+						<Text style={css.textFooter}>{'DON\'T \nSELECT\nALL'}</Text>
+					</TouchableOpacity>
+	
+					<TouchableOpacity style={css.buttonFooter}>
+						<Icon type='material' name='add' size={24} color='#000' />
+					</TouchableOpacity>
+						
+				</View>
 			
-			<CheckBox 
-				title={title}
-				containerStyle={{
-					flex: 1,
-					backgroundColor: 'transparent',
-					borderColor: 'transparent'
-				}}
-				checked={select}
-				onPress={()=>setSelect(!select)}
-			/>
-			
-			<TouchableOpacity style={css.touchableCategory}>
-				<Icon type='font-awesome-5' name='edit' size={18} color='#000' containerStyle={css.icon}/>
-			</TouchableOpacity>
-		
-			
-		</View>
+			</View>
+		</SafeAreaView>
 	)
 }
 
-export default Category
+export default Categories
