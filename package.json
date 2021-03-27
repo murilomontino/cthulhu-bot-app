@@ -6,7 +6,13 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "expo start",
-    "start:react": "react-native start"
+    "start:react": "react-native start",
+    "commit:": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.14.1",
