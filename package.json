@@ -6,7 +6,9 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "expo start",
-    "start:react": "react-native start"
+    "start:react": "react-native start",
+    "commit": "git-cz"
+
   },
   "dependencies": {
     "@expo/ngrok": "^2.4.3",
@@ -55,14 +57,16 @@
     "@types/redux": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.21.0",
     "eslint-plugin-react": "^7.22.0",
     "husky": "^5.2.0",
     "typescript": "^4.2.2"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
     }
   },
   "private": true
