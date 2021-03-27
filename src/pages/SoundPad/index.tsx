@@ -5,7 +5,7 @@ import SoundList from '../../components/SoundList'
 import ButtonFloating from '../../components/ButtonFloating'
 
 
-const SoundPad = (): JSX.Element => {
+const SoundPad: React.FC = () => {
 	
 
 	return (

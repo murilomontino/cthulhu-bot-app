@@ -11,7 +11,7 @@ interface Props {
 
 }
 
-const CreateSound = ({visible, fadeAnim}:Props):JSX.Element => {
+const CreateSound: React.FC<Props> = ({visible, fadeAnim}:Props)=> {
 	
 	return (
 		<Animated.View 
