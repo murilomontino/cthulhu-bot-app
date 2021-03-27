@@ -9,6 +9,7 @@
     "start:react": "react-native start"
   },
   "dependencies": {
+    "@expo/ngrok": "^2.4.3",
     "@react-native-async-storage/async-storage": "^1.14.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/drawer": "^5.12.4",
@@ -23,6 +24,7 @@
     "expo-splash-screen": "~0.8.0",
     "expo-status-bar": "~1.0.3",
     "expo-updates": "~0.4.0",
+    "global": "^4.4.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",
@@ -41,6 +43,8 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/react-native": "^0.63.50",
@@ -53,10 +57,13 @@
     "@typescript-eslint/parser": "^4.16.1",
     "eslint": "^7.21.0",
     "eslint-plugin-react": "^7.22.0",
+    "husky": "^5.2.0",
     "typescript": "^4.2.2"
   },
-  "jest": {
-    "preset": "jest-expo"
+  "husky":{
+    "hooks":{
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "private": true
 }
