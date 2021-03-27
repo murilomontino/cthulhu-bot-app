@@ -6879,6 +6879,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"install@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "install@npm:0.13.0"
+  checksum: ccb9caa85166de28af041bdfe945d949420c1de3101522acf7b211476c255301de4bc4bb74db2a3373f846f58a8213333110c3503230671f8e958b698b60d6cf
+  languageName: node
+  linkType: hard
+
 "internal-slot@npm:^1.0.3":
   version: 1.0.3
   resolution: "internal-slot@npm:1.0.3"
@@ -10280,6 +10287,7 @@ resolve@^2.0.0-next.3:
     expo-updates: ~0.4.0
     global: ^4.4.0
     husky: ^5.2.0
+    install: ^0.13.0
     react: 16.13.1
     react-dom: 16.13.1
     react-native: ~0.63.4

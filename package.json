@@ -6,8 +6,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "expo start",
-    "start:react": "react-native start",
-    "test:": "git-cz"
+    "start:react": "react-native start"
   },
   "dependencies": {
     "@expo/ngrok": "^2.4.3",
@@ -60,12 +59,13 @@
     "eslint": "^7.21.0",
     "eslint-plugin-react": "^7.22.0",
     "husky": "^5.2.0",
+    "install": "^0.13.0",
     "typescript": "^4.2.2"
   },
+  "private": true,
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog"
+      "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "private": true
+  }
 }
